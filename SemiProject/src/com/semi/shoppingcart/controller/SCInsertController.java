@@ -39,16 +39,16 @@ public class SCInsertController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int usernum = Integer.parseInt(request.getParameter("usernum"));
-		int shopnum = Integer.parseInt(request.getParameter("shopnum"));
+		int productnum = Integer.parseInt(request.getParameter("productnum"));
 		int cnt = Integer.parseInt(request.getParameter("cnt"));
 		int result = 0;
 		
 		ShoppingCart sc = new ShoppingCart();
 		sc.setMemberNo(usernum);
-		sc.setProductNo(shopnum);
+		sc.setProductNo(productnum);
 		sc.setquantity(cnt);
 		
-		ShoppingCart scList = new ShoppingCartService().selectCart(usernum,shopnum);
+		ShoppingCart scList = new ShoppingCartService().selectUserCart(usernum);
 		
 		if (scList != null) {//장바구니에 다른 물품 추가
 			result = new ShoppingCartService().insertSC(sc);
@@ -59,12 +59,6 @@ public class SCInsertController extends HttpServlet {
 		response.setContentType("json/application; charset=UTF-8");
 		response.getWriter().print("1");
 		
-		if (result>0) {
-			System.out.println("성공");
-		}else {
-			System.out.println("실패");
-		}
-	
 	}
 
 }

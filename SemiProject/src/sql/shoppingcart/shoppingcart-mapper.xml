@@ -20,6 +20,13 @@
 		AND PRODUCT_NO = ?
 	</entry>
 	
+	<!-- 카트에 이미 있는지 확인 -->
+	<entry key="selectUserCart">
+		SELECT * 
+		FROM SHOPPING_CART
+		WHERE MEMBER_NO = ?
+	</entry>
+	
 	<!-- 카트 체크 삭제 -->
 	<entry key="delChecked">
 		DELETE
