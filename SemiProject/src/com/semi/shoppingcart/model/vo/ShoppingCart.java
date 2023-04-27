@@ -11,6 +11,8 @@ public class ShoppingCart {
 	private double bookDc;
 	private int bookStock;
 	
+	private String titleImg;
+	
 	private int salePrice;
 	private int totalPrice;
 	

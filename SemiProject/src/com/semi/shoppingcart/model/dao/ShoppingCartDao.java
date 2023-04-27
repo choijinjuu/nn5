@@ -33,7 +33,6 @@ public class ShoppingCartDao {
 		PreparedStatement pstmt = null;
 		
 		String sql = prop.getProperty("newInsertSC");
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, sc.getMemberNo());
@@ -232,6 +231,38 @@ public class ShoppingCartDao {
 		}
 		
 		return result;
+	}
+
+	//유저의 장바구니에 이미 물품이 있는지 확인 메소드
+	public ShoppingCart selectUserCart(Connection conn, int usernum) {
+		ShoppingCart sc = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectUserCart");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, usernum);
+			
+			rset = pstmt.executeQuery();
+			
+			if (rset.next()) {
+				sc = new ShoppingCart(rset.getInt("CART_ID"),
+									  rset.getInt("MEMBER_NO"),
+									  rset.getInt("PRODUCT_NO"),
+									  rset.getInt("QUANTITY")
+									 );
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return sc;
 	}
 
 	

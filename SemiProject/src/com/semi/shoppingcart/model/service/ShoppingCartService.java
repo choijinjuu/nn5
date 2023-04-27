@@ -130,4 +130,15 @@ public class ShoppingCartService {
 		return result;
 	}
 
+	//유저의 장바구니에 이미 물품이 있는지 확인 메소드
+	public ShoppingCart selectUserCart(int usernum) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ShoppingCart sc = new ShoppingCartDao().selectUserCart(conn,usernum);
+		
+		JDBCTemplate.close(conn);
+		
+		return sc;
+	}
+
 }

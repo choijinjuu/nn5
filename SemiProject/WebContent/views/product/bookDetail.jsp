@@ -677,7 +677,7 @@
 				url : "<%=request.getContextPath()%>/insert.sc",
 				data : {
 					usernum:<%=loginUser.getMemberNo()%>,
-					shopnum:<%=p.getProductNo()%>,
+					productnum:<%=p.getProductNo()%>,
 					cnt:$("input[name=result]").val()
 				},
 				type : "post",
