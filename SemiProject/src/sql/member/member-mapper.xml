@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="loginMember">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID = ?
+		AND MEMBER_PWD = ? 
+		AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="insertMember">
+		INSERT INTO MEMBER(MEMBER_NO
+						   ,GRADE
+						   ,MEMBER_ROLE
+						   ,MEMBER_ID
+						   ,MEMBER_PWD
+						   ,MEMBER_NAME
+						   ,MEMBER_BIRTH
+						   ,GENDER
+						   ,PHONE
+						   ,EMAIL
+						   ,ADDRESS
+						   )
+					VALUES(SEQ_MNO.NEXTVAL
+						   ,DEFAULT
+						   ,'1'
+						   ,?
+						   ,?
+						   ,?
+						   ,?
+						   ,?
+						   ,?
+						   ,?
+						   ,?)	   
+	</entry>
+	
+	<entry key="checkId">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID = ?
+	</entry>
+
+	<entry key="selectId">
+		SELECT MEMBER_ID
+		FROM MEMBER
+		WHERE MEMBER_NAME = ?
+		AND MEMBER_BIRTH = ?
+		AND PHONE = ?
+	</entry>
+	
+	<entry key="findId">
+		SELECT MEMBER_ID
+		FROM MEMBER
+		WHERE MEMBER_NAME = ?
+		AND PHONE = ?
+		AND MEMBER_BIRTH = ?          
+	</entry>
+	
+	<entry key="searchPwd">
+		SELECT MEMBER_PWD
+        FROM MEMBER
+        WHERE MEMBER_ID = ?
+        AND MEMBER_NAME = ?
+        AND MEMBER_BIRTH = ?
+        AND PHONE = ?
+	</entry>
+	
+	<entry key="selectShoppingList">
+		SELECT ORDER_NO, CREATED_AT, MEMBER_NAME,  PRODUCT_NAME
+		FROM MEMBER M
+		JOIN PAYMENT PM USING (MEMBER_NO)
+		JOIN PRODUCT PR ON (PM.PRODUCT_NO = PR.PRODUCT_NO)
+		WHERE M.STATUS = 'Y'
+		ORDER BY CREATED_AT
+	</entry>
+</properties>

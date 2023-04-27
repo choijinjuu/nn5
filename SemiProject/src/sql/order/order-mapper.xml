@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+		
+	<!-- 주문db에 입력 -->
+	<entry key="insertChecked">
+		INSERT INTO P_ORDER(ORDER_NO, MEMBER_NO, PRODUCT_NO, QUANTITY)
+		SELECT CART_ID,MEMBER_NO,PRODUCT_NO,QUANTITY
+		FROM SHOPPING_CART
+		WHERE PRODUCT_NO = ?
+		AND MEMBER_NO = ?
+	</entry>
+	
+	<!-- 주문db 삭제 -->
+	<entry key="deleteOrder">
+		DELETE FROM P_ORDER
+		WHERE MEMBER_NO = ?
+	</entry>
+	
+	<!-- 주문상품 조회 -->
+	<entry key="selectList">
+		SELECT DISTINCT ORDER_NO,PRODUCT_NO,MEMBER_NO,PRODUCT_NAME,(PRODUCT_PRICE-PRODUCT_PRICE*(PRODUCT_SALES_RATE/100)) PRICE,QUANTITY,PRODUCT_PUBLISHER,MEMBER_NAME,PHONE,EMAIL,ADDRESS,MEMBER_POINT
+		FROM P_ORDER O
+		JOIN MEMBER M USING(MEMBER_NO)
+		JOIN PRODUCT P USING(PRODUCT_NO)
+		WHERE MEMBER_NO = ?
+	</entry>
+	
+	<!-- 결제정보 입력 -->
+	<entry key="orderPayment">
+		INSERT INTO PAYMENT(PAYMENT_NUMBER, ORDER_NO, MEMBER_NO, PRODUCT_NO, PAYMENT, ORDER_REQUEST, BANK_NAME, DEPOSIT_NAME, USE_POINT, ADDRESS_NAME, POST, ROAD_ADDRESS, DETAIL_ADDRESS, STATE, DELIVERY_COST, PHONE, EMAIL)
+		VALUES((SELECT TO_CHAR(SYSDATE, 'YYMMDD') || LPAD(TRUNC(DBMS_RANDOM.VALUE(0, 99999)), 5, '0') AS RANDOM_NUM FROM DUAL),?,?,?,?,?,?,?,?,?,?,?,?,'배송 준비중',?,?,?)
+	</entry>
+	
+</properties>
