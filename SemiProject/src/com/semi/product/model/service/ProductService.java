@@ -8,7 +8,6 @@ import com.semi.common.vo.PageInfo;
 import com.semi.product.model.dao.ProductDao;
 import com.semi.product.model.vo.Attachment;
 import com.semi.product.model.vo.Product;
-import com.semi.product.model.vo.Review;
 
 public class ProductService {
 	
@@ -73,37 +72,21 @@ public class ProductService {
 		
 		return list;
 	}
-	
-	//신간도서리스트 조회
-		public ArrayList<Product> selectNewAttachList(PageInfo pi) {
-			
-			Connection conn = JDBCTemplate.getConnection();
-			
-			ArrayList<Product> list = new ProductDao().selectNewAttachList(conn,pi);
-			
-			JDBCTemplate.close(conn);
-			
-			return list;
-		}
-	
-	//카테고리 클릭시 출력되는 도서 리스트 조회
-	public ArrayList<Product> selectAttachmentCList(PageInfo pi, String cate) {
+
+	//상품 리스트 조회
+<<<<<<< HEAD
+	public ArrayList<Product> selectItem() {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Product> list = new ProductDao().selectAttachmentC(conn,pi,cate);
-		
-		JDBCTemplate.close(conn);
-		
-		return list;
-	}
-	
-	//상품 리스트 조회
+		ArrayList<Product> list = new ProductDao().selectItem(conn);
+=======
 	public ArrayList<Product> selectItem(PageInfo pi) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		ArrayList<Product> list = new ProductDao().selectItem(conn,pi);
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 		
 		JDBCTemplate.close(conn);
 		
@@ -121,6 +104,11 @@ public class ProductService {
 		
 		return listCount;
 	}
+<<<<<<< HEAD
+
+
+
+=======
 	
 	//상품 총 게시글 개수 
 		public int selectProListCount() {
@@ -147,7 +135,6 @@ public class ProductService {
 	}
 	//도서,상품 상세 페이지.. 상세이미지
 	public Product productDetail2(int pno) {
-		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		Product p2 = new ProductDao().productDetail2(conn,pno);
@@ -156,58 +143,5 @@ public class ProductService {
 		
 		return p2;
 	}
-	
-	//메인페이지 신간 도서 4개
-	public ArrayList<Product> newBookList() {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		ArrayList<Product> newBook = new ProductDao().newBookList(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return newBook;
-	}
-
-	//메인페이지 쇼핑 목록 4개
-	public ArrayList<Product> newProList() {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		ArrayList<Product> newPro = new ProductDao().newProList(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return newPro;
-	}
-
-	//댓글 작성
-	public int insertReview(Review r) {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new ProductDao().insertReview(conn,r);
-		
-		if(result>0) {
-			JDBCTemplate.commit(conn);
-		}else {
-			JDBCTemplate.rollback(conn);
-		}
-		
-		JDBCTemplate.close(conn);
-		
-		return result;
-	}
-
-	//댓글 목록 조회
-	public ArrayList<Review> selectReview(int productNo) {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		ArrayList<Review> rlist = new ProductDao().selectReview(conn,productNo);
-		
-		JDBCTemplate.close(conn);
-		
-		return rlist;
-	}
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 }

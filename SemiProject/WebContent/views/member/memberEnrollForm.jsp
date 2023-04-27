@@ -404,23 +404,19 @@ header>button{
                         <td colspan="2"><input type="text" id="sample4_postcode" name="addressNum" placeholder="우편번호" readonly></td>
                         <td colspan="2"><input type="text" id="sample4_roadAddress" name="loadAddress" placeholder="도로명주소" size="60" readonly></td>
                         <td></td>
-                          <td>
-                        <input type="hidden" id="sample4_jibunAddress" name="jibun" placeholder="지번주소"  size="60">
-						<input type="hidden" id="sample4_extraAddress" name="extraAddress" placeholder="참고항목"  size="60">
-						<input type="hidden" id="sample4_engAddress" name="eng" placeholder="영문주소"  size="60" >
-                          
-                          </td> 
-
+                        <td>
+	                        <input type="hidden" id="sample4_jibunAddress" name="jibun" placeholder="지번주소"  size="60">
+							<input type="hidden" id="sample4_extraAddress" name="extraAddress" placeholder="참고항목"  size="60">
+							<input type="hidden" id="sample4_engAddress" name="eng" placeholder="영문주소"  size="60" >
+                        </td> 
 
                     </tr>
                     <tr style="border-bottom: 1px solid black;">
                     	<td><input type="button" style="border-radius:30px" class="btn btn-success" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"></td>
                     	<td colspan="3"><input type="text" id="sample4_detailAddress" name="detailAddress" placeholder="상세주소"  size="60"></td>
                     	<td><span id="guide" style="color:#999;display:none"></span></td>
-                    	
-                    
                     </tr>
-                    <tr class="birth">
+                    	<tr class="birth">
                         <td><b> * 생년월일 </b></td>
                         <td style="padding-left: 0px;"><input type="number" required placeholder="년(4자)" style="width:150px;" name="birthYear"></td>
                         <td style="padding-top:14px;">   <select class="form-select form-select-lg mb-3" name="birthMonth" >

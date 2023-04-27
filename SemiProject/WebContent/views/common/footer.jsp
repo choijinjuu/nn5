@@ -17,7 +17,7 @@
         }
         #footer{
             width: 1420px;
-            height: 150px;
+            height: auto;
             margin: auto;
             box-sizing: border-box;
             border-top-style: solid; /*푸터 상 선*/

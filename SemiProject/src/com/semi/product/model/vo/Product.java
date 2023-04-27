@@ -23,25 +23,15 @@ public class Product {
 	public Product() {
 		super();
 	}
+<<<<<<< HEAD
+=======
 	public Product(String titleImg) {
 		super();
 		this.titleImg = titleImg;
 	}
-	//메인페이지 도서 쇼핑 리스트
-	public Product(int productNo, String productName, String productPublisher, int productPrice, int productSalesRate,
-			String titleImg) {
-		super();
-		this.productNo = productNo;
-		this.productName = productName;
-		this.productPublisher = productPublisher;
-		this.productPrice = productPrice;
-		this.productSalesRate = productSalesRate;
-		this.titleImg = titleImg;
-	}
-	public Product(int productNo, String productName, String productPublisher, String productText, int productPrice,
+	public Product(String productName, String productPublisher, String productText, int productPrice,
 			int productSalesRate, String author,String titleImg) {
 		super();
-		this.productNo = productNo;
 		this.productName = productName;
 		this.productPublisher = productPublisher;
 		this.productText = productText;
@@ -50,6 +40,7 @@ public class Product {
 		this.author = author;
 		this.titleImg = titleImg;
 	}
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 	public Product(int productNo, String productName, String productPublisher, String productText, int productPrice,
 			int productSalesRate, Date createDate, String titleImg) {
 		super();

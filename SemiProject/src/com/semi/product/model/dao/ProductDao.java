@@ -15,7 +15,6 @@ import com.semi.common.vo.PageInfo;
 import com.semi.member.model.dao.MemberDao;
 import com.semi.product.model.vo.Attachment;
 import com.semi.product.model.vo.Product;
-import com.semi.product.model.vo.Review;
 
 public class ProductDao {
 	
@@ -171,93 +170,21 @@ public class ProductDao {
 		return list;
 	}
 
-	//카테고리 클릭시 출력되는 도서 리스트 조회
-	public ArrayList<Product> selectAttachmentC(Connection conn, PageInfo pi, String cate) {
-
+	//상품 리스트 조회
+<<<<<<< HEAD
+	public ArrayList<Product> selectItem(Connection conn) {
+		
 		ArrayList<Product> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
+		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectAttachmentListC");
+		String sql = prop.getProperty("selectItem");
 		
 		try {
-			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit()+1;
-			int endRow = (startRow+pi.getBoardLimit())-1;
+			stmt = conn.createStatement();
 			
-			pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, cate);
-				pstmt.setInt(2, startRow);
-				pstmt.setInt(3, endRow);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				list.add(new Product(rset.getInt("PRODUCT_NO")
-						,rset.getString("PRODUCT_CATEGORY")
-						,rset.getString("PRODUCT_NAME")
-						,rset.getString("PRODUCT_PUBLISHER")
-						,rset.getString("PRODUCT_TEXT")
-						,rset.getInt("PRODUCT_PRICE")
-						,rset.getInt("PRODUCT_SALES_RATE")
-						,rset.getString("AUTHOR")
-						,rset.getDate("CREATE_DATE")
-						,rset.getString("titleImg")));
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		return list;
-	}
-	
-	//신간도서리스트 조회
-		public ArrayList<Product> selectNewAttachList(Connection conn, PageInfo pi) {
-			
-			ArrayList<Product> list = new ArrayList<>();
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
-			
-			String sql = prop.getProperty("selectNewAttachList");
-			
-			try {
-				int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit()+1;
-				int endRow = (startRow+pi.getBoardLimit())-1;
-				
-				pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, startRow);
-					pstmt.setInt(2, endRow);
-				
-				rset = pstmt.executeQuery();
-				
-				while(rset.next()) {
-					list.add(new Product(rset.getInt("PRODUCT_NO")
-							,rset.getString("PRODUCT_CATEGORY")
-							,rset.getString("PRODUCT_NAME")
-							,rset.getString("PRODUCT_PUBLISHER")
-							,rset.getString("PRODUCT_TEXT")
-							,rset.getInt("PRODUCT_PRICE")
-							,rset.getInt("PRODUCT_SALES_RATE")
-							,rset.getString("AUTHOR")
-							,rset.getDate("CREATE_DATE")
-							,rset.getString("titleImg")));
-				}
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				JDBCTemplate.close(rset);
-				JDBCTemplate.close(pstmt);
-			}
-			return list;
-		}
-
-
-	//상품 리스트 조회
+			rset = stmt.executeQuery(sql);
+=======
 	public ArrayList<Product> selectItem(Connection conn, PageInfo pi) {
 		
 		ArrayList<Product> list = new ArrayList<>();
@@ -275,6 +202,7 @@ public class ProductDao {
 				pstmt.setInt(2, endRow);
 			
 			rset = pstmt.executeQuery();
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 			
 			while(rset.next()) {
 				list.add(new Product(rset.getInt("PRODUCT_NO")
@@ -292,7 +220,11 @@ public class ProductDao {
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(rset);
+<<<<<<< HEAD
+			JDBCTemplate.close(stmt);
+=======
 			JDBCTemplate.close(pstmt);
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 		}
 		return list;
 	}
@@ -304,7 +236,11 @@ public class ProductDao {
 		ResultSet rset = null;
 		Statement stmt = null;
 		
+<<<<<<< HEAD
+		String sql = prop.getProperty("selectListCount");
+=======
 		String sql = prop.getProperty("selectProListCount");
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 		
 		try {
 			stmt = conn.createStatement();
@@ -325,8 +261,10 @@ public class ProductDao {
 		
 		return listCount;
 	}
+<<<<<<< HEAD
+=======
 	
-	//상품 총 게시글 수
+	//도서 총 게시글 수
 		public int selectProListCount(Connection conn) {
 			
 			int listCount = 0;
@@ -371,8 +309,7 @@ public class ProductDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				p = new Product(rset.getInt("PRODUCT_NO"),
-								rset.getString("PRODUCT_NAME"),
+				p = new Product(rset.getString("PRODUCT_NAME"),
 								rset.getString("PRODUCT_PUBLISHER"),
 								rset.getString("PRODUCT_TEXT"),
 								rset.getInt("PRODUCT_PRICE"),
@@ -416,131 +353,7 @@ public class ProductDao {
 		}
 		return p2;
 	}
-
-	//메인페이지 신간 도서 리스트 4개
-	public ArrayList<Product> newBookList(Connection conn) {
-		
-		ArrayList<Product> newBook = new ArrayList<>();
-		ResultSet rset = null;
-		Statement stmt = null;
-		
-		String sql = prop.getProperty("newBookList");
-		
-		try {
-			stmt = conn.createStatement();
-			
-			rset = stmt.executeQuery(sql);
-			
-			while(rset.next()) {
-				newBook.add(new Product(rset.getInt("PRODUCT_NO")
-										,rset.getString("PRODUCT_NAME")
-										,rset.getString("PRODUCT_PUBLISHER")
-										,rset.getInt("PRODUCT_PRICE")
-										,rset.getInt("PRODUCT_SALES_RATE")
-										,rset.getString("titleImg")));
-			}
-					
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(stmt);
-		}
-		return newBook;
-	}
-	
-	//메인페이지 상품 리스트 4개
-	public ArrayList<Product> newProList(Connection conn) {
-		
-		ArrayList<Product> newPro = new ArrayList<>();
-		ResultSet rset = null;
-		Statement stmt = null;
-		
-		String sql = prop.getProperty("newProList");
-		
-		try {
-			stmt = conn.createStatement();
-			
-			rset = stmt.executeQuery(sql);
-			
-			while(rset.next()) {
-				newPro.add(new Product(rset.getInt("PRODUCT_NO")
-									,rset.getString("PRODUCT_NAME")
-									,rset.getString("PRODUCT_PUBLISHER")
-									,rset.getInt("PRODUCT_PRICE")
-									,rset.getInt("PRODUCT_SALES_RATE")
-									,rset.getString("titleImg")));
-			}
-					
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(stmt);
-		}
-		return newPro;
-	}
-
-	//리플 작성
-	public int insertReview(Connection conn, Review r) {
-		
-		int result = 0;
-		PreparedStatement pstmt =null;
-		
-		String sql = prop.getProperty("insertReview");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, r.getMemberNo());
-				pstmt.setInt(2, r.getProductNo());
-				pstmt.setInt(3, r.getReviewStar());
-				pstmt.setString(4, r.getReviewContent());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(pstmt);
-		}
-		
-		return result;
-	}
-
-	//댓글 목록 조회
-	public ArrayList<Review> selectReview(Connection conn, int productNo) {
-		
-		ArrayList<Review> rlist = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectReview");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, productNo);
-				
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				rlist.add(new Review(rset.getInt("REVIEW_STAR"),
-									rset.getString("REVIEW_CONTENT"),
-									rset.getString("CREATE_DATE"),
-									rset.getString("MEMBER_ID")));
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		return rlist;
-	}
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 
 
 }

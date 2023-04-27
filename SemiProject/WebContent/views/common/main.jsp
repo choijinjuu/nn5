@@ -91,12 +91,12 @@
             border-bottom-color: rgb(148, 146, 146);
 
         }
-        #con_bi,#con_new_1,#con_pro_1{
+        #con_bi{
             /* background-color: blue; */
             width: 100%;
             height: 74%;
         }
-        #con_bi>div,#con_new_1>div,#con_pro_1>div{
+        #con_bi>div{
             height: 100%;
             width: 25%;
             /* border: 1px solid red; */
@@ -121,23 +121,19 @@
         #con_text>div{
             padding: 1px;
         }
-        #con_text_title,#con_pro_name,#con_new_name{
+        #con_text_title{
             font-size: 17px;
             font-weight: 600;
             color: rgb(66, 66, 66);
         }
-        #con_text_author,#con_pro_pu,#con_new_pu{
+        #con_text_author{
             font-size: 14px;
             font-weight: 400;
             color: rgb(133, 131, 131);
         }
-        #con_text_pri,#con_pro_pri,#con_new_pri{
+        #con_text_pri{
             font-weight: 600;
             color: rgb(34, 34, 138);
-        }
-        
-        a{
-            text-decoration: none;
         }
 
 
@@ -151,11 +147,11 @@
             <img src="resources/배너예시.png" alt="">
         </div>
         <div id="con_menu">
-            <div><button type="button"><img src="resources/메인new.png" alt="" style="width: 25px; height: 25px; margin: auto;"></button>신간</div>
+            <div><button type="button"><img src="resources/메인new.png" alt="" style="width: 25px; height: 25px; margin: auto;"></button></button>신간</div>
             <div><button><img src="resources/best.png" alt="" style="width: 32px; height: 33px; margin: auto;"></button>베스트</div>
-            <div><button type="button" onclick="location.href='/SemiProject/attendance.v'"><img src="resources/stamp.png" alt="" style="width: 40px; height: 45px; margin: auto;"></button>출석체크</div>
-            <div><button><img src="resources/postage-stamp.png" alt="" style="width: 38px; height: 40px; margin: auto;"></button>통합리뷰</div>
-            <div><button><img src="resources/location.png" alt="" style="width: 38px; height: 40px; margin: auto;"></button>매장찾기</div>
+            <div><button><img src="resources/stamp.png" alt="" style="width: 40px; height: 45px; margin: auto;"></button></button>출석체크</div>
+            <div><button><img src="resources/postage-stamp.png" alt="" style="width: 38px; height: 40px; margin: auto;"></button></button>통합리뷰</div>
+            <div><button><img src="resources/location.png" alt="" style="width: 38px; height: 40px; margin: auto;"></button></button>매장찾기</div>
         </div>
         <div id="con_best">
             <div id="con_bt">
@@ -220,17 +216,119 @@
             <div id="con_bt">
                 화제의 신간
             </div>
-            <div id="con_new_1">
-                
+            <div id="con_bi">
+                <div id="con_bi_1">
+                    <div id="con_bi_1a">
+                        <img src="" alt="" style="height: 160px; width: 130px; display: block; margin: auto;
+                                            position: relative; top: 25px;">
+                    </div>
+                    <div id="con_text">
+                        <div id="con_text_title">책 제목</div>
+                        <div>
+                            <div id="con_text_author">지은이,회사</div>
+                        </div>
+                        <div id="con_text_pri">3000원</div>
+                    </div>
+                </div>
+                <div id="con_bi_1">
+                    <div id="con_bi_1a">
+                        <img src="" alt="" style="height: 160px; width: 130px; display: block; margin: auto;
+                                            position: relative; top: 25px;">
+                    </div>
+                    <div id="con_text">
+                        <div id="con_text_title">책 제목</div>
+                        <div>
+                            <div id="con_text_author">지은이,회사</div>
+                        </div>
+                        <div id="con_text_pri">3000원</div>
+                    </div>
+                </div>
+                <div id="con_bi_1">
+                    <div id="con_bi_1a">
+                        <img src="" alt="" style="height: 160px; width: 130px; display: block; margin: auto;
+                                            position: relative; top: 25px;">
+                    </div>
+                    <div id="con_text">
+                        <div id="con_text_title">책 제목</div>
+                        <div>
+                            <div id="con_text_author">지은이,회사</div>
+                        </div>
+                        <div id="con_text_pri">3000원</div>
+                    </div>
+                </div>
+                <div id="con_bi_1">
+                    <div id="con_bi_1a">
+                        <img src="" alt="" style="height: 160px; width: 130px; display: block; margin: auto;
+                                            position: relative; top: 25px;">
+                    </div>
+                    <div id="con_text">
+                        <div id="con_text_title">책 제목</div>
+                        <div>
+                            <div id="con_text_author">지은이,회사</div>
+                        </div>
+                        <div id="con_text_pri">3000원</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="con_pro">
             <div id="con_bt">
-		쇼핑
-			</div>
-			<div id="con_pro_1">
-			
-			</div>
+                쇼핑
+            </div>
+            <div id="con_bi">
+                <div id="con_bi_1">
+                    <div id="con_bi_1a">
+                        <img src="" alt="" style="height: 160px; width: 130px; display: block; margin: auto;
+                                            position: relative; top: 25px;">
+                    </div>
+                    <div id="con_text">
+                        <div id="con_text_title">책 제목</div>
+                        <div>
+                            <div id="con_text_author">지은이,회사</div>
+                        </div>
+                        <div id="con_text_pri">3000원</div>
+                    </div>
+                </div>
+                <div id="con_bi_1">
+                    <div id="con_bi_1a">
+                        <img src="" alt="" style="height: 160px; width: 130px; display: block; margin: auto;
+                                            position: relative; top: 25px;">
+                    </div>
+                    <div id="con_text">
+                        <div id="con_text_title">책 제목</div>
+                        <div>
+                            <div id="con_text_author">지은이,회사</div>
+                        </div>
+                        <div id="con_text_pri">3000원</div>
+                    </div>
+                </div>
+                <div id="con_bi_1">
+                    <div id="con_bi_1a">
+                        <img src="" alt="" style="height: 160px; width: 130px; display: block; margin: auto;
+                                            position: relative; top: 25px;">
+                    </div>
+                    <div id="con_text">
+                        <div id="con_text_title">책 제목</div>
+                        <div>
+                            <div id="con_text_author">지은이,회사</div>
+                        </div>
+                        <div id="con_text_pri">3000원</div>
+                    </div>
+                </div>
+                <div id="con_bi_1">
+                    <div id="con_bi_1a">
+                        <img src="" alt="" style="height: 160px; width: 130px; display: block; margin: auto;
+                                            position: relative; top: 25px;">
+                    </div>
+                    <div id="con_text">
+                        <div id="con_text_title">책 제목</div>
+                        <div>
+                            <div id="con_text_author">지은이,회사</div>
+                        </div>
+                        <div id="con_text_pri">3000원</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <pre>
@@ -241,67 +339,4 @@
       	추후 삭제 예정
      	                    <a href="/SemiProject/map.co">찾아오시는 길</a>      	
       </div>
-      
-      	<script>
-      	$(function(){
-  			$.ajax({
-  				url : "main.nb", //신간 4개
-  				type : "get",
-  				success : function(newBook){
-  					
-  					var result = "";
-  						
-  					for(var i in newBook){
-  						result += '<div id="con_bi_1">'
-		      		                      	+'<a href="/SemiProject/book.de?pno='+newBook[i].productNo+'">'
-		      		                      +'<div id="con_bi_1a">'
-		      		                          +'<img src="/SemiProject'+newBook[i].titleImg+'" alt="" id="con_pro_img" style="height: 160px; width: 130px; display: block; margin: auto;'
-		      		                                              +'position: relative; top: 25px;">'
-		      		                      +'</div>'
-		      		                      +'<div id="con_text">'
-		      		                          +'<div id="con_new_name">'+newBook[i].productName+'</div>'
-		      		                        +'<div>'
-		      		                      		+'<div id="con_new_pu">'+newBook[i].productPublisher+'</div>'
-		      		                    		+'</div>'
-		      		                  		+'<div id="con_new_pri">'+Math.round((1-((newBook[i].productSalesRate)*0.01))*newBook[i].productPrice)+'원</div>'
-		      		                      +'</div>'
-		      		                        +'</a>'
-		      		                  +'</div>'
-  					}
-  					$("#con_new_1").html(result);
-  				}
-  			});
-  		});
-      	
-      		$(function(){
-      			$.ajax({
-      				url : "main.new", //상품 4개
-      				type : "get",
-      				success : function(newPro){
-      					
-      					var result = "";
-      						
-      					for(var i in newPro){
-      						
-      						result += '<div id="con_bi_1">'
-      										+'<a href="/SemiProject/book.de?pno='+newPro[i].productNo+'">'
-			      		                      +'<div id="con_bi_1a">'
-			      		                          +'<img src="/SemiProject'+newPro[i].titleImg+'" alt="" id="con_pro_img" style="height: 160px; width: 130px; display: block; margin: auto;'
-			      		                                              +'position: relative; top: 25px;">'
-			      		                      +'</div>'
-			      		                      +'<div id="con_text">'
-			      		                          +'<div id="con_pro_name">'+newPro[i].productName+'</div>'
-			      		                        +'<div>'
-			      		                      		+'<div id="con_pro_pu">'+newPro[i].productPublisher+'</div>'
-			      		                    		+'</div>'
-			      		                  		+'<div id="con_pro_pri">'+Math.round((1-((newPro[i].productSalesRate)*0.01))*newPro[i].productPrice)+'원</div>'
-			      		                      +'</div>'
-			      		                    +'</a>'
-			      		                  +'</div>'
-      					}
-      					$("#con_pro_1").html(result);
-      				}
-      			});
-      		});
-      	</script>
 </body>

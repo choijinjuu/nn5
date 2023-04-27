@@ -1,6 +1,9 @@
 package com.semi.product.controller;
 
+<<<<<<< HEAD
+=======
 import java.io.File;
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -62,15 +65,24 @@ public class ItemRegistration extends HttpServlet {
 			String des = multiRequest.getParameter("pro_Des");
 			
 			ArrayList<Attachment> list = new ArrayList<>();
+<<<<<<< HEAD
+=======
 			Attachment at = null;
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 			
 			for(int i=0; i<4; i++) {
 				String key = "file"+i;
 			
 						if(multiRequest.getOriginalFileName(key) != null) {
+<<<<<<< HEAD
+							Attachment at = new Attachment();
+								at.setAttachmentName(multiRequest.getOriginalFileName("file1"));
+								at.setAttachmentChange(multiRequest.getFilesystemName("file1"));
+=======
 							at = new Attachment();
 								at.setAttachmentName(multiRequest.getOriginalFileName(key));
 								at.setAttachmentChange(multiRequest.getFilesystemName(key));
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 								at.setAttachmentPath("/resources/");
 								
 							if(i==1) {
@@ -86,6 +98,12 @@ public class ItemRegistration extends HttpServlet {
 			
 			if(result>0) {
 				request.getSession().setAttribute("alertMsg", "상품 등록 완료");
+<<<<<<< HEAD
+			}else {
+				if(list!=null) {
+		//			new File(savePath+list.getAttachmentName()).delete(); 파일 삭제
+				}
+=======
 				response.sendRedirect(request.getContextPath()+"/item.list?currentPage=1");
 			}else {
 				if(list!=null) {
@@ -93,6 +111,7 @@ public class ItemRegistration extends HttpServlet {
 				}
 				request.setAttribute("errorMsg", "상품 등록 실패");
 				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 			}
 		};
 	

@@ -25,49 +25,30 @@ public class Member {
 	}
 	
 	
-	
-	
-	
-	
-	
+	public Member(String memberId, String memberPwd, String memberBirth, String phone, String email) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberBirth = memberBirth;
+		this.phone = phone;
+		this.email = email;
+	}
+
+
 	public Member(String memberPwd) {
 		super();
 		this.memberPwd = memberPwd;
 	}
 
-
-
-
-
-
-
-	public Member(String memberName, String memberBirth, String phone) {
-		super();
-		this.memberName = memberName;
-		this.memberBirth = memberBirth;
-		this.phone = phone;
-	}
-
-
-	
-
-
-
-
-	public Member(String memberId, String memberPwd, String memberName, String memberBirth, String phone) {
+	public Member(String memberId,String memberName, String memberBirth, String phone) {
 		super();
 		this.memberId = memberId;
-		this.memberPwd = memberPwd;
 		this.memberName = memberName;
 		this.memberBirth = memberBirth;
 		this.phone = phone;
 	}
 
-
-
-
-
-
+	
 
 	public Member(String memberId, String memberPwd, String memberName, String memberBirth, String gender, String phone,
 			String email, String address) {
@@ -81,12 +62,6 @@ public class Member {
 		this.email = email;
 		this.address = address;
 	}
-
-
-
-
-
-
 
 	public Member(int memberNo, int grade, int memberRole, String memberId, String memberPwd, String memberName,
 			String memberBirth, String gender, String phone, String email, String address, int memberPoint,
@@ -109,11 +84,6 @@ public class Member {
 		this.attendance = attendance;
 		this.status = status;
 	}
-
-
-
-
-
 
 
 	public int getMemberNo() {

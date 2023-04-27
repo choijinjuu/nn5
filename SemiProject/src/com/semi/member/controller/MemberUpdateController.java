@@ -1,11 +1,17 @@
 package com.semi.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.semi.member.model.service.MemberService;
+import com.semi.member.model.vo.Member;
+
 
 /**
  * Servlet implementation class MemberUpdateController
@@ -26,27 +32,66 @@ public class MemberUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("views/member/updateProfile.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//post 요청이기 때문에 인코딩 처리하기
 		request.setCharacterEncoding("UTF-8");
-		
-		//변경된 정보 수정하기
-		String memberId = request.getParameter("memberId");
-		String memberName = request.getParameter("memberName");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
-		String address = request.getParameter("address");
-		
-		
-		
-	}
 
+		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
+		
+		String memberId = loginUser.getMemberId();
+		String memberPwd = request.getParameter("memberPwd");
+		String phone = request.getParameter("phone");
+		
+		if(memberPwd.isEmpty()) {
+			memberPwd = loginUser.getMemberPwd();
+		}
+		
+		String email = request.getParameter("email");
+		String dotCom = request.getParameter("dotCom");
+		
+		String memEmail = loginUser.getEmail();
+		int sign = memEmail.indexOf("@");
+		String emailAdd = loginUser.getEmail().substring(sign+1);
+		
+		if(dotCom == null) {
+			email = email + "@" +emailAdd;
+		}else {
+			email = email + "@" + dotCom;
+		}
+		
+		String birthYear = request.getParameter("birthYear");
+		String birthMonth = request.getParameter("birthMonth");
+		String birthDay = request.getParameter("birthDay");
+		
+		String memberBirth = "";
+		
+		memberBirth = birthYear+birthMonth+birthDay;
+		
+		System.out.println(memberId);
+		System.out.println(memberPwd);
+		System.out.println(email);
+		System.out.println(memberBirth);
+		System.out.println(phone);
+		
+		Member m = new Member(memberId, memberPwd, memberBirth, phone, email);
+		
+		Member memUpdate = new MemberService().updateMember(m);
+		
+		System.out.println(memUpdate);
+		
+		HttpSession session = request.getSession();
+		
+		if(memUpdate != null) {
+			session.setAttribute("alertMsg", "회원 정보가 수정되었습니다.");
+			session.setAttribute("loginUser", memUpdate);
+			response.sendRedirect(request.getContextPath()+"/myPage.me");
+		}else {
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+	}
 }
