@@ -98,12 +98,13 @@
 		AND STATUS = 'Y'
 	</entry>
 	<entry key="updateMember">
-		UPDATE MEMBER
-		SET MEMBER_PWD = ?
+		UPDATE MEMBER M
+		SET MEMBER_PWD = ? 
+		   ,PHONE = ?
 		   ,EMAIL = ?
 		   ,MEMBER_BIRTH = ?
 		   ,MODIFY_DATE = SYSDATE
-		WHERE MEMBER_ID = ?
+		WHERE M.MEMBER_ID = ?
 	</entry>
 	<entry key="selectMember">
 		SELECT *

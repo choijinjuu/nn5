@@ -399,9 +399,10 @@ public ArrayList<Coupon> selectCoupon(Connection conn, int memNo) {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberPwd());
-			pstmt.setString(2, m.getEmail());
-			pstmt.setString(3, m.getMemberBirth());
-			pstmt.setString(4, m.getMemberId());
+			pstmt.setString(2, m.getPhone());
+			pstmt.setString(3, m.getEmail());
+			pstmt.setString(4, m.getMemberBirth());
+			pstmt.setString(5, m.getMemberId());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

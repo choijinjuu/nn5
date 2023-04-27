@@ -25,6 +25,16 @@ public class Member {
 	}
 	
 	
+	public Member(String memberId, String memberPwd, String memberBirth, String phone, String email) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberBirth = memberBirth;
+		this.phone = phone;
+		this.email = email;
+	}
+
+
 	public Member(String memberPwd) {
 		super();
 		this.memberPwd = memberPwd;
@@ -38,14 +48,7 @@ public class Member {
 		this.phone = phone;
 	}
 
-	public Member(String memberId, String memberPwd, String memberName, String memberBirth, String phone) {
-		super();
-		this.memberId = memberId;
-		this.memberPwd = memberPwd;
-		this.memberName = memberName;
-		this.memberBirth = memberBirth;
-		this.phone = phone;
-	}
+	
 
 	public Member(String memberId, String memberPwd, String memberName, String memberBirth, String gender, String phone,
 			String email, String address) {

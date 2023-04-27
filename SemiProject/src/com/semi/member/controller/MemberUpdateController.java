@@ -40,14 +40,15 @@ public class MemberUpdateController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		//request.getRequestDispatcher("views/member/updateProfile.jsp").forward(request, response);
+
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 		
 		String memberId = loginUser.getMemberId();
 		String memberPwd = request.getParameter("memberPwd");
+		String phone = request.getParameter("phone");
 		
 		if(memberPwd.isEmpty()) {
-			memberPwd += loginUser.getMemberPwd();
+			memberPwd = loginUser.getMemberPwd();
 		}
 		
 		String email = request.getParameter("email");
@@ -69,14 +70,15 @@ public class MemberUpdateController extends HttpServlet {
 		
 		String memberBirth = "";
 		
-		memberBirth = birthYear+"/"+birthMonth+"/"+birthDay;
+		memberBirth = birthYear+birthMonth+birthDay;
 		
 		System.out.println(memberId);
 		System.out.println(memberPwd);
 		System.out.println(email);
 		System.out.println(memberBirth);
+		System.out.println(phone);
 		
-		Member m = new Member(memberId, memberPwd, email, memberBirth);
+		Member m = new Member(memberId, memberPwd, memberBirth, phone, email);
 		
 		Member memUpdate = new MemberService().updateMember(m);
 		
