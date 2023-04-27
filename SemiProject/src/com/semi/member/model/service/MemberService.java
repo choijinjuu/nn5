@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.semi.common.JDBCTemplate;
 import com.semi.member.model.dao.MemberDao;
+import com.semi.member.model.vo.Coupon;
 import com.semi.member.model.vo.Member;
 import com.semi.member.model.vo.Payment;
 
@@ -77,14 +78,72 @@ public class MemberService {
 		return pwdM;
 	}
 	
-	public ArrayList<Payment> selectShoppingList() {
+	public ArrayList<Coupon> selectCoupon(int memNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Payment> list = new MemberDao().selectShoppingList(conn);
+		ArrayList<Coupon> clist = new MemberDao().selectCoupon(conn, memNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return clist;
+	}
+	
+	public ArrayList<Payment> selectShoppingList(int memNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Payment> list = new MemberDao().selectShoppingList(conn,memNo);
 		
 		JDBCTemplate.close(conn);
 
 		
 		return list;
 	}
+
+	public ArrayList<Payment> selectModal(int orderNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Payment> plist = new MemberDao().selectModal(conn,orderNo);
+
+		JDBCTemplate.close(conn);
+		
+		return plist;
+	}
+
+	public int deleteMember(String loginId, String loginPwd) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, loginId, loginPwd);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		return result;
+	}
+
+	public Member updateMember(Member m) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().updateMember(conn,m);
+		
+		Member memUpdate = null;
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+			memUpdate = new MemberDao().selectMember(conn,m.getMemberId());
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return memUpdate;
+	}
+
+
+	
 }

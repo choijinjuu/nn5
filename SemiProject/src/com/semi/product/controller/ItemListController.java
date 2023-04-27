@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
+=======
 import com.semi.common.vo.PageInfo;
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 import com.semi.product.model.service.ProductService;
 import com.semi.product.model.vo.Product;
 
@@ -33,6 +36,11 @@ public class ItemListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+<<<<<<< HEAD
+		ArrayList<Product> list = new ProductService().selectItem();
+		
+		request.setAttribute("atList", list);
+=======
 		//페이징바 처리
 		int listCount; //현재 총 게시글의 개수
 		int currentPage; //현재 페이지
@@ -63,6 +71,7 @@ public class ItemListController extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 		
 		request.getRequestDispatcher("views/product/itemList.jsp").forward(request, response);
 	}

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.semi.common.vo.PageInfo;
 import com.semi.product.model.service.ProductService;
 import com.semi.product.model.vo.Product;
@@ -33,7 +32,7 @@ public class BookListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				//페이징바 처리
+		//페이징바 처리
 				int listCount; //현재 총 게시글의 개수
 				int currentPage; //현재 페이지
 				int pageLimit; //페이지 하단에 보여질 페이징바의 페이지 최대 개수
@@ -58,19 +57,8 @@ public class BookListController extends HttpServlet {
 				
 				PageInfo pi = new PageInfo(listCount,currentPage,pageLimit,boardLimit,maxPage,startPage,endPage);
 				
-//				System.out.println("겟 옴..");
-				String cate = request.getParameter("cate");
-//				System.out.println(cate);
-				
-				ArrayList<Product> list = null;
-				
 				//페이지에 보여질 게시글 리스트
-				if(cate==null) {
-					list = new ProductService().selectAttachmentList(pi);
-				}else {
-					list = new ProductService().selectAttachmentCList(pi,cate);
-				}
-//				System.out.println(list);
+				ArrayList<Product> list = new ProductService().selectAttachmentList(pi);
 				
 				request.setAttribute("list", list);
 				request.setAttribute("pi", pi);
@@ -82,6 +70,8 @@ public class BookListController extends HttpServlet {
 			 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 			 */
 			protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
-	}
-}
+				// TODO Auto-generated method stub
+				doGet(request, response);
+			}
+
+		}

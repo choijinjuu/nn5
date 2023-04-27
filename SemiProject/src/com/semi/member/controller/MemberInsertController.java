@@ -57,14 +57,10 @@ public class MemberInsertController extends HttpServlet {
 
 		address = addressNum + loadAddress + detailAddress + extraAddress;
 		
-		
-		
-		
 		String birthYear = request.getParameter("birthYear");
 		String birthMonth = request.getParameter("birthMonth");
 		String birthDay = request.getParameter("birthDay");
 		String dotCom = request.getParameter("dotCom");
-		
 		
 		if(Integer.parseInt(birthMonth)<10) {
 			

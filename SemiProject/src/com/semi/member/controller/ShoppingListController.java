@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.semi.member.model.service.MemberService;
+import com.semi.member.model.vo.Member;
 import com.semi.member.model.vo.Payment;
 
 /**
@@ -31,7 +33,11 @@ public class ShoppingListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Payment> list = new MemberService().selectShoppingList();
+		
+		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
+		int memNo = loginUser.getMemberNo();
+		
+		ArrayList<Payment> list = new MemberService().selectShoppingList(memNo);
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/member/myShoppingList.jsp").forward(request, response);
@@ -41,8 +47,28 @@ public class ShoppingListController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int orderNo = Integer.parseInt(request.getParameter("orderNo"));
+		
+		ArrayList<Payment> plist = new MemberService().selectModal(orderNo);
+		
+//		System.out.println(plist.get(0).getOrderNo());
+//		if(plist.get(0).getOrderNo() == orderNo) {
+//			System.out.println("같슈");
+//		}
+		
+		response.setContentType("json/application; charset=UTF-8");
+		Gson gson = new Gson();
+		
+		Payment p = null;
+		if(plist.get(0).getOrderNo() == orderNo) {
+			for(int i=0; i<plist.size(); i++) {
+				p = plist.get(i);
+			}
+		}else {
+			System.out.println("다시");
+		}
+		gson.toJson(p,response.getWriter());
+		
 	}
 
 }

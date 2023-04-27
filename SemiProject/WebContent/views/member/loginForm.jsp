@@ -151,7 +151,6 @@
 		//단순 페이지 이동이여도 servlet을 거쳐서 매핑값이 노출되어 갈수있도록 작업하기.
 		
 		location.href ="<%=contextPath%>/enrollForm.me";
-		
 	}
     </script>
        <%@ include file = "../common/footer.jsp"%>

@@ -1,8 +1,6 @@
 package com.semi.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,21 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.member.model.service.MemberService;
-import com.semi.member.model.vo.Coupon;
-import com.semi.member.model.vo.Member;
-
 
 /**
- * Servlet implementation class MypageConteroller
+ * Servlet implementation class DeleteAddrController
  */
-@WebServlet("/myPage.me")
-public class MypageConteroller extends HttpServlet {
+@WebServlet("/deleteAddr.me")
+public class DeleteAddrController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageConteroller() {
+    public DeleteAddrController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +28,21 @@ public class MypageConteroller extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		int memNo = Integer.parseInt(request.getParameter("memNo"));
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-		int memNo = loginUser.getMemberNo();
-//		System.out.println(memNo);
-		
-		ArrayList<Coupon> clist = new MemberService().selectCoupon(memNo);
-		
-		request.setAttribute("clist", clist);
-		request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
-		
+//		String chkAddr = request.getParameter("chkAddr");
+//		System.out.println(chkAddr);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		String chkAddr = request.getParameter("chkAddr");
+		System.out.println(chkAddr);
+		
+		/*int result = new MemberService().deleteAddr(chkAddr);*/
+		
 		
 	}
 

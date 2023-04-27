@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-	<!--  pna작성-->
-	<entry key="insertQna">
-		INSERT INTO BOARD(BOARD_NO,MEMBER_NO,PRODUCT_NO,BOARD_CATEGORY,BOARD_TITLE,BOARD_CONTENT)
-		VALUES (SEQ_BNO.NEXTVAL,?,?,3,?,?)
-	</entry>
-</properties>

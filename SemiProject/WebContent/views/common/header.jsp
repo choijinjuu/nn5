@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import = "com.semi.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import = "javax.servlet.http.HttpSession, com.semi.member.model.vo.Member"%>
 <%
 	///SemiProject 
 	String contextPath = request.getContextPath();
@@ -12,6 +12,8 @@
 	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/7f4a340891.js" crossorigin="anonymous"></script>
 <html lang="en">
     <head>
     <!-- 제이쿼리 -->
@@ -285,6 +287,15 @@
         </style>
 </head>
 <body>
+	<script>
+		var msg = "<%=alertMsg%>";
+		
+		if(msg !="null"){
+			alert(msg);
+			<%session.removeAttribute("alertMsg");%>
+		}
+	</script>
+		
         <div id="header">
             <div id="header_1">
                 <div id="logo">
@@ -302,7 +313,7 @@
                 <%}else if(loginUser != null){ %>
                 <div id="login_mem" style="background-color: blueviolet;">
                     <a href="<%=contextPath %>/myPage.me" id="login_btn">마이페이지</a>
-                    <a href="<%=contextPath%>/list.sc" id="mem_btn">장바구니</a>
+                    <a href="" id="mem_btn">장바구니</a>
                     <a href="<%=contextPath %>/logout.me" id="mem_btn">로그아웃</a>
                 </div>
                  <%} %>
@@ -312,7 +323,6 @@
 	                    <a href="<%//=contextPath %>/logout.me" id="mem_btn">로그아웃</a>
 	                </div>
                <%//} %>  -->
-               
             </div>
             <div id="header_2">
                 <div id="category_all">
@@ -323,7 +333,7 @@
                                 <li><a href="<%=contextPath %>/book.list?currentPage=1">도서</a>
                                     <ul id="all_list_1">
                                         <li><a href="" style="float: right; width: 206px; text-align:center;">베스트 셀러</a></li>
-                                        <li><a href="<%=contextPath %>/book.new?currentPage=1"" style="float: right; width: 206px; text-align:center;">신간 도서</a></li>
+                                        <li><a href="" style="float: right; width: 206px; text-align:center;">신간 도서</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="<%=contextPath%>/item.list?currentPage=1">쇼핑</a></li>
@@ -345,10 +355,14 @@
                         <li id="book"><a href="<%=contextPath %>/book.list?currentPage=1">도서</a>
                             <ul id="book_li">
                                 <li><a href="">베스트 도서</a></li>
-                                <li><a href="<%=contextPath %>/book.new?currentPage=1"">신간 도서</a></li>
+                                <li><a href="">신간 도서</a></li>
                             </ul>
                         </li>
+
+                        <li><a href="<%=contextPath%>/item.list">쇼핑</a></li>
+
                         <li><a href="<%=contextPath%>/item.list?currentPage=1">쇼핑</a></li>
+
                         <li><a href="<%=contextPath %>/attendance.v">출석체크</a></li>
                         <li id="customer"><a href="">고객센터</a>
                             <ul id="customer_li">
@@ -371,5 +385,6 @@
                 </div>
             </div>
         </div>
+        
 </body>
 </html>

@@ -70,8 +70,13 @@ public class BookRegistration extends HttpServlet {
 			
 					if(multiRequest.getOriginalFileName(key) != null) {
 							Attachment at = new Attachment();
+<<<<<<< HEAD
+								at.setAttachmentName(multiRequest.getOriginalFileName("file1"));
+								at.setAttachmentChange(multiRequest.getFilesystemName("file1"));
+=======
 								at.setAttachmentName(multiRequest.getOriginalFileName(key));
 								at.setAttachmentChange(multiRequest.getFilesystemName(key));
+>>>>>>> 7f41d6fd73ef9706befdbff57a83b03339b20b14
 								at.setAttachmentPath("/resources/");
 								
 							if(i==1) {
